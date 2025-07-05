@@ -895,7 +895,7 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; }
     }
     .job-entry-buttons .btn-card {
         max-width: 300px; 
-        min-width: 265px;
+        min-width: 100px;
         margin-right: 0;
         margin-bottom: 10px;
     }
