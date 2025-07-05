@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Work Practice Gallery - Rifqi Fauzi Anwar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Specific CSS for the gallery page (can be merged into style.css if desired) */
+        .gallery-container {
+            padding: 100px 25px; /* Distance from top and sides */
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .gallery-container h2 {
+            margin-bottom: 50px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px; /* Adjust image height */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+        .gallery-item p {
+            margin-top: 15px;
+            font-size: 1em;
+            color: var(--secondary-text);
+        }
+        .back-button {
+            margin-top: 60px;
+        }
+
+        /* Responsive adjustments for gallery */
+        @media (max-width: 767px) {
+            .gallery-container {
+                padding-top: 80px;
+                padding-bottom: 60px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">PORTFOLIO</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-container">
+            <h2><i class="fas fa-images"></i> Field Work Practice (PKL) Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/img/qos.jpg" alt="Mikrotik RouterOS Configuration">
+                    <p>Configuring Mikrotik router for internal network management.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/towertriangle.jpg" alt="Point-to-Point Wireless Installation">
+                    <p>Installation and adjustment process of Point-to-Point wireless devices on a Triangle tower.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/buatlab.jpg" alt="Computer Lab Network">
+                    <p>Network infrastructure designed and implemented for the Computer Lab.</p>
+                </div>
+            </div>
+            <div class="back-button">
+                <a href="index.html#experience" class="btn btn-primary"><i class="fas fa-arrow-left">&nbsp;</i> Back to Experience</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rifqi Fauzi Anwar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

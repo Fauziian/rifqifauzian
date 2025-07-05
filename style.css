@@ -1,0 +1,883 @@
+/* --- Global Styling --- */
+:root {
+    --bg-dark: #1a1a1a;        /* Background utama yang gelap */
+    --text-light: #f0f0f0;     /* Warna teks terang */
+    --accent-blue: #00e6e6;    /* Biru elektrik untuk highlight */
+    --secondary-text: #b0b0b0; /* Teks abu-abu untuk detail */
+    --card-bg: #2b2b2b;        /* Background kartu/elemen */
+    --border-color: #444;      /* Warna border/garis pemisah */
+    --button-hover: #00cccc;   /* Warna hover untuk tombol */
+    --gradient-start: #111111; /* Warna awal gradient */
+    --gradient-end: #0a0a0a;   /* Warna akhir gradient */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    color: var(--text-light);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Latar belakang gradient sebagai fallback */
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Pastikan semua elemen konten berada di atas video background */
+body > *, .header {
+    position: relative;
+    z-index: 1; /* Pastikan konten seperti header, section, footer di atas video-background */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5em; line-height: 1.2; }
+h2 { font-size: 2.8em; text-align: center; margin-bottom: 3.5rem; color: var(--accent-blue); }
+h3 { font-size: 2em; }
+
+p {
+    font-size: 1.1em;
+    color: var(--secondary-text);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--button-hover);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.highlight {
+    color: var(--accent-blue);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.btn i {
+    margin-left: 10px;
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+
+.btn-card { /* Gaya untuk tombol dalam kartu (proyek dan pengalaman) */
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 8px;
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    margin-right: 15px; /* Jarak antar tombol jika ada lebih dari satu */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-card i {
+    margin-right: 8px;
+}
+
+.btn-card:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* --- Header --- */
+.header {
+    background-color: rgba(26, 26, 26, 0.7); /* Lebih transparan agar video terlihat */
+    padding: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Memberikan efek blur pada header */
+}
+
+.header.scrolled {
+    background-color: rgba(26, 26, 26, 0.85); /* Sedikit lebih solid saat discroll */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu ul li {
+    margin-left: 35px;
+}
+
+.nav-menu ul li a {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1.1em;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-blue);
+    left: 50%;
+    bottom: -3px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-menu ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- Burger Menu Styling --- */
+.nav-toggle {
+    display: none; /* Sembunyikan checkbox */
+}
+
+.nav-toggle-label {
+    display: none; /* Sembunyikan secara default, tampilkan di mobile */
+    width: 30px;
+    height: 25px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001; /* Pastikan di atas menu */
+}
+
+.burger-icon,
+.burger-icon::before,
+.burger-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-blue);
+    border-radius: 2px;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+
+.burger-icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.burger-icon::before {
+    top: -10px;
+}
+
+.burger-icon::after {
+    top: 10px;
+}
+
+/* Animasi ikon burger saat dicentang */
+.nav-toggle:checked + .nav-toggle-label .burger-icon {
+    transform: rotate(45deg);
+    background-color: var(--text-light); /* Ubah warna saat aktif */
+}
+
+.nav-toggle:checked + .nav-toggle-label .burger-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+    background-color: var(--text-light);
+}
+
+.nav-toggle:checked + .nav-toggle-label .burger-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+    background-color: var(--text-light);
+    opacity: 0; /* Sembunyikan garis bawah */
+}
+
+
+/* --- Hero Section - Kunci Stabilitas Foto dan Teks --- */
+.hero-section {
+    background-color: transparent; /* Transparan agar video terlihat */
+    padding-top: 100px; /* Jarak atas default untuk desktop */
+    padding-bottom: 120px; /* Jarak bawah */
+    display: flex;
+    align-items: center; /* Pusatkan konten vertikal untuk desktop */
+    justify-content: center;
+    min-height: 90vh; /* Tinggi minimum hero section */
+    position: relative;
+    overflow: hidden; /* Tetap pada hero-section untuk efek parallax jika ada */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Default ke kolom untuk mobile */
+    align-items: center; /* Pusatkan item secara horizontal untuk mobile */
+    text-align: center; /* Pusatkan teks untuk mobile */
+    gap: 40px;
+    width: 100%;
+}
+
+.hero-image {
+    flex-shrink: 0;
+    margin-bottom: 30px; /* Jarak bawah foto untuk mobile */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+}
+.hero-image.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--accent-blue);
+    box-shadow: 0 0 25px rgba(0, 230, 230, 0.5);
+}
+
+.hero-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Teks dimulai dari atas dalam kolom */
+    align-items: center; /* Untuk mobile, pusatkan teks horizontal */
+    max-width: 800px;
+    height: auto; /* Pastikan tinggi kontainer teks menyesuaikan konten */
+    overflow: visible; /* Pastikan teks tidak terpotong */
+    width: auto;
+}
+
+/* Ukuran font untuk desktop (nilai default) */
+.hero-text h1 {
+    font-size: 3.5em; /* Disesuaikan agar sama dengan h1 global atau sedikit lebih besar */
+    line-height: 1.2;
+}
+.hero-text h2 { /* Ini adalah subheading yang akan di-type */
+    font-size: 2.0em; /* Ukuran default untuk subheading */
+    line-height: 1.3;
+    position: relative; /* Penting untuk posisi kursor */
+    display: inline-block; /* Penting untuk kursor agar sesuai dengan lebar teks */
+    min-height: 1.3em; /* Sesuaikan dengan line-height dan font-size agar cukup menampung satu baris teks */
+    white-space: nowrap; /* Pastikan teks tidak patah ke baris baru */
+    overflow: hidden; /* Sembunyikan bagian teks yang melebihi lebar */
+    padding-right: 5px; /* Sedikit padding untuk kursor */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+.hero-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+}
+
+/* Kursor berkedip hanya untuk elemen subheading */
+.typed-text-subheading::after {
+    content: '|'; /* Kursor berbentuk pipa */
+    display: inline-block;
+    animation: blink-caret 0.75s step-end infinite;
+    color: var(--accent-blue); /* Warna kursor */
+}
+
+/* Pastikan elemen lain tidak memiliki kursor berkedip */
+.typed-text-heading::after,
+.typed-text-paragraph::after {
+    content: none;
+    animation: none;
+}
+
+/* Animasi kursor berkedip */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-blue); } /* Warna kursor saat terlihat */
+}
+
+
+/* --- Sembunyikan tombol hero di awal, akan muncul setelah inisialisasi JS --- */
+.hero-buttons {
+    opacity: 0; /* Tetap 0 di awal untuk animasi fade-in */
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    margin-top: 40px;
+}
+
+
+/* --- Sections Styling --- */
+section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(26, 26, 26, 0.9); /* Tambahkan background semi-transparan untuk readability di atas video */
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+h2 i {
+    margin-right: 15px;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+/* --- Animasi Elemen Muncul Saat Digulir (Fade-In & Slide-Up) --- */
+.animate-on-scroll {
+    opacity: 0; /* Mulai dari tidak terlihat */
+    transform: translateY(30px); /* Mulai sedikit di bawah posisi akhir */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Animasi transisi */
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1; /* Jadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi aslinya */
+}
+
+/* Delay tambahan untuk setiap kartu atau item agar muncul berurutan */
+/* Anda bisa menambahkan aturan delay untuk elemen lain jika mereka termasuk dalam .animate-on-scroll */
+/* Contoh untuk judul section jika Anda ingin mereka muncul setelah digulir */
+section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan delay untuk h2 section */
+
+.skill-category:nth-child(1).is-visible { transition-delay: 0.1s; }
+.skill-category:nth-child(2).is-visible { transition-delay: 0.2s; }
+/* Delay untuk project-card utama (3 pertama) */
+.project-card:nth-child(1).is-visible { transition-delay: 0.1s; }
+.project-card:nth-child(2).is-visible { transition-delay: 0.2s; }
+.project-card:nth-child(3).is-visible { transition-delay: 0.3s; }
+/* Delay untuk project-card di additional-projects */
+#additional-projects .project-card:nth-child(1).is-visible { transition-delay: 0.4s; }
+#additional-projects .project-card:nth-child(2).is-visible { transition-delay: 0.5s; }
+#additional-projects .project-card:nth-child(3).is-visible { transition-delay: 0.6s; }
+#additional-projects .project-card:nth-child(4).is-visible { transition-delay: 0.7s; }
+#additional-projects .project-card:nth-child(5).is-visible { transition-delay: 0.8s; }
+#additional-projects .project-card:nth-child(6).is-visible { transition-delay: 0.9s; }
+
+.job-entry.is-visible { transition-delay: 0.1s; }
+.contact-section .contact-links a:nth-child(1).is-visible { transition-delay: 0.1s; }
+.contact-section .contact-links a:nth-child(2).is-visible { transition-delay: 0.2s; }
+.contact-section .contact-links a:nth-child(3).is-visible { transition-delay: 0.3s; }
+
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.skill-category {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,230,230,0.2);
+}
+
+.skill-category h3 {
+    color: var(--accent-blue);
+    margin-top: 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.skill-category h3 i {
+    margin-right: 10px;
+    color: var(--text-light);
+}
+
+.skill-category ul li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.skill-category ul li::before {
+    content: '\2022';
+    color: var(--accent-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 1.2em;
+}
+
+.skill-category ul li strong {
+    color: var(--accent-blue);
+}
+
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    /* transition: max-height 0.5s ease-out, opacity 0.5s ease-out; */ /* Dipindahkan ke #additional-projects */
+    /* overflow: hidden; */ /* Dipindahkan ke #additional-projects */
+}
+
+/* Gaya untuk kontainer proyek tambahan */
+#additional-projects {
+    display: grid; /* Penting untuk mempertahankan grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 0; /* Hapus margin atas default untuk grid tersembunyi */
+    max-height: 0; /* Awalnya tersembunyi */
+    opacity: 0; /* Awalnya tidak terlihat */
+    overflow: hidden; /* Penting untuk transisi max-height */
+    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Transisi untuk slide dan fade */
+    grid-auto-rows: minmax(0, 1fr); /* Atur tinggi baris agar tidak memakan ruang kosong saat tersembunyi */
+    pointer-events: none; /* Mencegah interaksi saat tersembunyi */
+}
+
+#additional-projects.is-visible { /* Menggunakan is-visible untuk mengontrol tampilan */
+    max-height: 2000px; /* Nilai besar yang cukup untuk menampung semua proyek saat terlihat */
+    opacity: 1;
+    pointer-events: auto; /* Izinkan interaksi saat terlihat */
+    margin-top: 40px; /* Tambahkan margin saat terlihat */
+}
+
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,230,230,0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-card .card-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: var(--text-light);
+}
+
+.project-card p {
+    margin-bottom: 15px;
+    color: var(--secondary-text);
+}
+
+.project-card .tech-stack {
+    font-size: 0.95em;
+    color: var(--accent-blue);
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+.project-card .tech-stack i {
+    margin-right: 8px;
+}
+
+.project-card .card-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* --- Experience Section --- */
+.job-entry {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Ini adalah inti dari pemusatan horizontal */
+    margin: 50px auto; /* Memberi margin atas/bawah 50px, dan auto untuk kiri/kanan */
+    max-width: 900px; /* Batasi lebar maksimum */
+    width: 90%; /* Ambil 90% dari lebar parent, akan di override oleh max-width jika lebih besar */
+    box-sizing: border-box; /* Pastikan padding dan border dihitung dalam total lebar/tinggi */
+}
+
+.job-entry:hover {
+     transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,230,230,0.2);
+}
+
+.job-entry h3 {
+    color: var(--accent-blue);
+    margin-top: 0;
+    font-size: 2em;
+}
+
+.job-entry .job-duration {
+    font-style: italic;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    display: block;
+    font-size: 1.1em;
+}
+
+.job-entry .job-duration i {
+    margin-right: 10px;
+    color: var(--text-light);
+}
+
+.job-entry ul {
+    list-style: disc;
+    margin-left: 25px;
+}
+
+.job-entry ul li {
+    margin-bottom: 10px;
+    color: var(--text-light);
+    font-size: 1.05em;
+}
+
+.job-entry-buttons { /* Gaya untuk wadah tombol di job-entry */
+    display: flex;
+    justify-content: flex-start; /* Sejajarkan ke kiri di desktop */
+    margin-top: 25px; /* Jarak dari konten di atasnya */
+    flex-wrap: wrap; /* Agar tombol wrap di mobile */
+    gap: 15px; /* Jarak antar tombol */
+}
+
+/* --- Contact Section --- */
+.contact-section p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contact-item {
+    font-size: 1.3em;
+    color: var(--accent-blue);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-item i {
+    margin-right: 12px;
+    font-size: 1.1em;
+}
+
+.contact-item:hover {
+    color: var(--button-hover);
+    transform: translateX(5px);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #0d0d0d;
+    color: var(--secondary-text);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.95em;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* --- Responsive Design --- */
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row; /* Horizontal untuk desktop */
+        text-align: left; /* Teks rata kiri */
+        justify-content: center; /* Pusatkan konten horizontal */
+        align-items: center; /* Sejajarkan foto dan teks di tengah vertikal */
+    }
+
+    .hero-image {
+        margin-right: 60px; /* Jarak foto dari teks di desktop */
+        margin-bottom: 0;
+    }
+
+    .hero-text {
+        justify-content: center; /* Pusatkan teks di desktop secara vertikal */
+        align-items: flex-start; /* Sejajarkan teks ke kiri di desktop */
+    }
+
+    /* Ukuran font untuk desktop (bisa disesuaikan jika perlu) */
+    .hero-text h1 {
+        font-size: 4.0em; /* Ukuran lebih besar untuk desktop */
+    }
+    .hero-text h2 {
+        font-size: 2.0em;
+        text-align: left; /* Rata kiri untuk subheading di desktop */
+    }
+    .hero-text p {
+        font-size: 1.0em;
+    }
+
+    .skills-grid, .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .job-entry {
+        max-width: 900px; /* Pastikan max-width tetap di desktop */
+        /* margin-left: auto; margin-right: auto; sudah diatur di luar media query */
+    }
+
+    .job-entry-buttons {
+        justify-content: flex-start; /* Pastikan rata kiri di desktop */
+    }
+}
+
+@media (max-width: 767px) {
+    /* Header di mobile */
+    .header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(26, 26, 26, 0.95);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+    }
+    .nav-menu ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-menu ul li a {
+        display: block;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    /* Tampilkan ikon burger */
+    .nav-toggle-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Saat checkbox dicentang, tampilkan menu */
+    .nav-toggle:checked ~ .nav-menu {
+        max-height: 300px; /* Sesuaikan dengan tinggi menu Anda */
+    }
+
+    /* Pengaturan umum untuk H1, H2 di mobile */
+    h1 { font-size: 3em; }
+    h2 { font-size: 2.2em; }
+    section {
+        padding: 60px 0;
+    }
+
+    /* Pengaturan Hero Section di mobile */
+    .hero-section {
+        padding-top: 80px; /* Cukup jauh dari navbar, sesuaikan jika perlu */
+        padding-bottom: 60px; /* Memberi ruang di bawah konten hero */
+        min-height: unset; /* Izinkan tinggi menyesuaikan konten */
+    }
+
+    .hero-image img {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 25px;
+    }
+
+    /* Ukuran font khusus untuk elemen teks di hero section pada mobile */
+    .hero-text h1 {
+        font-size: 2.2em; /* Ukuran font H1 di mobile */
+        line-height: 1.2;
+    }
+    .hero-text h2 {
+        font-size: 1.4em; /* Ukuran font H2 di mobile */
+        text-align: center; /* Rata tengah untuk subheading di mobile */
+        min-height: 1.3em; /* Sesuaikan min-height untuk mobile juga */
+    }
+    .hero-text p {
+        font-size: 0.95em; /* Ukuran font paragraf di mobile */
+        line-height: 1.6;
+        text-align: center; /* Pastikan teks paragraf rata tengah di mobile */
+        max-width: 90%; /* Batasi lebar paragraf agar tidak terlalu lebar di layar sempit */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+
+    .skills-grid, .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card .card-buttons {
+        flex-direction: column;
+    }
+    .btn-card {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .hero-text {
+        align-items: center; /* Pusatkan teks di mobile */
+    }
+
+    .job-entry { /* Penyesuaian di mobile untuk job-entry */
+        width: 95%; /* Mungkin sedikit lebih lebar di mobile agar tidak terlalu sempit */
+        padding: 25px; /* Sedikit kurangi padding di mobile jika perlu */
+    }
+
+    .job-entry-buttons {
+        flex-direction: column; /* Tombol vertikal di mobile */
+        align-items: center; /* Pusatkan tombol di mobile */
+    }
+    .job-entry-buttons .btn-card {
+        width: 100%; /* Tombol memenuhi lebar di mobile */
+        margin-right: 0; /* Hapus margin kanan di mobile */
+        margin-bottom: 10px; /* Jarak vertikal antar tombol */
+    }
+}
+
+
+/* --- Video Background Styling --- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2; /* Penting: Pastikan ini di bawah semua konten */
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Pastikan video menutupi seluruh area tanpa distorsi */
+    filter: brightness(0.6) grayscale(0.2); /* Opsional: Membuat video sedikit lebih gelap dan desaturasi */
+}
