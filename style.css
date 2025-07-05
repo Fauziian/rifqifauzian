@@ -874,7 +874,8 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; }
         align-items: center;
     }
     .btn-card {
-        width: 80%;
+        max-width: 300px; 
+        min-width: 270px;
         margin-right: 0;
         margin-bottom: 10px;
     }
@@ -893,7 +894,8 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; }
         align-items: center;
     }
     .job-entry-buttons .btn-card {
-        width: 80%;
+        max-width: 300px; 
+        min-width: 230px;
         margin-right: 0;
         margin-bottom: 10px;
     }
