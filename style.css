@@ -557,7 +557,7 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; }
 }
 
 #additional-projects.is-visible {
-    max-height: 2000px;
+    max-height: 4000px;
     opacity: 1;
     pointer-events: auto;
     margin-top: 40px;
