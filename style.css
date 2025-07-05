@@ -851,7 +851,7 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
         align-items: center; /* Pusatkan tombol di mobile */
     }
     .job-entry-buttons .btn-card {
-        width: 100%; /* Tombol memenuhi lebar di mobile */
+        width: 89%; /* Tombol memenuhi lebar di mobile */
         margin-right: 0; /* Hapus margin kanan di mobile */
         margin-bottom: 10px; /* Jarak vertikal antar tombol */
     }
