@@ -832,7 +832,7 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
         flex-direction: column;
     }
     .btn-card {
-        width: 100%;
+        width: 89%;
         margin-right: 0;
         margin-bottom: 10px;
     }
