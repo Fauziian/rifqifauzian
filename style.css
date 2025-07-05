@@ -1,14 +1,16 @@
-/* --- Global Styling --- */
 :root {
-    --bg-dark: #1a1a1a;        /* Background utama yang gelap */
-    --text-light: #f0f0f0;     /* Warna teks terang */
-    --accent-blue: #00e6e6;    /* Biru elektrik untuk highlight */
-    --secondary-text: #b0b0b0; /* Teks abu-abu untuk detail */
-    --card-bg: #2b2b2b;        /* Background kartu/elemen */
-    --border-color: #444;      /* Warna border/garis pemisah */
-    --button-hover: #00cccc;   /* Warna hover untuk tombol */
-    --gradient-start: #111111; /* Warna awal gradient */
-    --gradient-end: #0a0a0a;   /* Warna akhir gradient */
+    --bg-dark: #1a1a1a;
+    --text-light: #f0f0f0;
+    --accent-blue: #00e6e6;
+    --secondary-text: #b0b0b0;
+    --card-bg: #2b2b2b;
+    --border-color: #444;
+    --button-hover: #00cccc;
+    --gradient-start: #111111;
+    --gradient-end: #0a0a0a;
+    --skill-card-bg: #222222;
+    --skill-progress-bg: #3a3a3a;
+    --skill-progress-fill: #00e6e6;
 }
 
 body {
@@ -17,16 +19,15 @@ body {
     padding: 0;
     line-height: 1.7;
     color: var(--text-light);
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Latar belakang gradient sebagai fallback */
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     background-attachment: fixed;
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-/* Pastikan semua elemen konten berada di atas video background */
 body > *, .header {
     position: relative;
-    z-index: 1; /* Pastikan konten seperti header, section, footer di atas video-background */
+    z-index: 1;
 }
 
 .container {
@@ -110,13 +111,17 @@ ul {
     transform: translateY(-2px);
 }
 
-.btn-card { /* Gaya untuk tombol dalam kartu (proyek dan pengalaman) */
+.btn-card:hover i {
+    color: #FFFFFF;
+}
+
+.btn-card {
     padding: 10px 20px;
     font-size: 1em;
     border-radius: 8px;
     background-color: var(--accent-blue);
     color: var(--bg-dark);
-    margin-right: 15px; /* Jarak antar tombol jika ada lebih dari satu */
+    margin-right: 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -131,6 +136,7 @@ ul {
 .btn-card:hover {
     background-color: var(--button-hover);
     transform: translateY(-2px);
+    color: #FFFFFF;
 }
 
 .text-center {
@@ -138,19 +144,18 @@ ul {
 }
 
 
-/* --- Header --- */
 .header {
-    background-color: rgba(26, 26, 26, 0.7); /* Lebih transparan agar video terlihat */
+    background-color: rgba(26, 26, 26, 0.7);
     padding: 20px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(5px); /* Memberikan efek blur pada header */
+    backdrop-filter: blur(5px);
 }
 
 .header.scrolled {
-    background-color: rgba(26, 26, 26, 0.85); /* Sedikit lebih solid saat discroll */
+    background-color: rgba(26, 26, 26, 0.85);
     box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
@@ -200,18 +205,17 @@ ul {
     width: 100%;
 }
 
-/* --- Burger Menu Styling --- */
 .nav-toggle {
-    display: none; /* Sembunyikan checkbox */
+    display: none;
 }
 
 .nav-toggle-label {
-    display: none; /* Sembunyikan secara default, tampilkan di mobile */
+    display: none;
     width: 30px;
     height: 25px;
     position: relative;
     cursor: pointer;
-    z-index: 1001; /* Pastikan di atas menu */
+    z-index: 1001;
 }
 
 .burger-icon,
@@ -240,10 +244,9 @@ ul {
     top: 10px;
 }
 
-/* Animasi ikon burger saat dicentang */
 .nav-toggle:checked + .nav-toggle-label .burger-icon {
     transform: rotate(45deg);
-    background-color: var(--text-light); /* Ubah warna saat aktif */
+    background-color: var(--text-light);
 }
 
 .nav-toggle:checked + .nav-toggle-label .burger-icon::before {
@@ -256,35 +259,34 @@ ul {
     top: 0;
     transform: rotate(90deg);
     background-color: var(--text-light);
-    opacity: 0; /* Sembunyikan garis bawah */
+    opacity: 0;
 }
 
 
-/* --- Hero Section - Kunci Stabilitas Foto dan Teks --- */
 .hero-section {
-    background-color: transparent; /* Transparan agar video terlihat */
-    padding-top: 100px; /* Jarak atas default untuk desktop */
-    padding-bottom: 120px; /* Jarak bawah */
+    background-color: transparent;
+    padding-top: 100px;
+    padding-bottom: 120px;
     display: flex;
-    align-items: center; /* Pusatkan konten vertikal untuk desktop */
+    align-items: center;
     justify-content: center;
-    min-height: 90vh; /* Tinggi minimum hero section */
+    min-height: 90vh;
     position: relative;
-    overflow: hidden; /* Tetap pada hero-section untuk efek parallax jika ada */
+    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
-    flex-direction: column; /* Default ke kolom untuk mobile */
-    align-items: center; /* Pusatkan item secara horizontal untuk mobile */
-    text-align: center; /* Pusatkan teks untuk mobile */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 40px;
     width: 100%;
 }
 
 .hero-image {
     flex-shrink: 0;
-    margin-bottom: 30px; /* Jarak bawah foto untuk mobile */
+    margin-bottom: 30px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
@@ -307,29 +309,28 @@ ul {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Teks dimulai dari atas dalam kolom */
-    align-items: center; /* Untuk mobile, pusatkan teks horizontal */
+    justify-content: flex-start;
+    align-items: center;
     max-width: 800px;
-    height: auto; /* Pastikan tinggi kontainer teks menyesuaikan konten */
-    overflow: visible; /* Pastikan teks tidak terpotong */
+    height: auto;
+    overflow: visible;
     width: auto;
 }
 
-/* Ukuran font untuk desktop (nilai default) */
 .hero-text h1 {
-    font-size: 3.5em; /* Disesuaikan agar sama dengan h1 global atau sedikit lebih besar */
+    font-size: 3.5em;
     line-height: 1.2;
 }
-.hero-text h2 { /* Ini adalah subheading yang akan di-type */
-    font-size: 2.0em; /* Ukuran default untuk subheading */
+.hero-text h2 {
+    font-size: 2.0em;
     line-height: 1.3;
-    position: relative; /* Penting untuk posisi kursor */
-    display: inline-block; /* Penting untuk kursor agar sesuai dengan lebar teks */
-    min-height: 1.3em; /* Sesuaikan dengan line-height dan font-size agar cukup menampung satu baris teks */
-    white-space: nowrap; /* Pastikan teks tidak patah ke baris baru */
-    overflow: hidden; /* Sembunyikan bagian teks yang melebihi lebar */
-    padding-right: 5px; /* Sedikit padding untuk kursor */
-    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+    position: relative;
+    display: inline-block;
+    min-height: 1.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 5px;
+    box-sizing: border-box;
 }
 .hero-text p {
     font-size: 1.1em;
@@ -338,42 +339,36 @@ ul {
     padding-bottom: 1rem;
 }
 
-/* Kursor berkedip hanya untuk elemen subheading */
 .typed-text-subheading::after {
-    content: '|'; /* Kursor berbentuk pipa */
+    content: '|';
     display: inline-block;
     animation: blink-caret 0.75s step-end infinite;
-    color: var(--accent-blue); /* Warna kursor */
+    color: var(--accent-blue);
 }
 
-/* Pastikan elemen lain tidak memiliki kursor berkedip */
 .typed-text-heading::after,
 .typed-text-paragraph::after {
     content: none;
     animation: none;
 }
 
-/* Animasi kursor berkedip */
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: var(--accent-blue); } /* Warna kursor saat terlihat */
+    50% { border-color: var(--accent-blue); }
 }
 
-
-/* --- Sembunyikan tombol hero di awal, akan muncul setelah inisialisasi JS --- */
 .hero-buttons {
-    opacity: 0; /* Tetap 0 di awal untuk animasi fade-in */
+    opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     margin-top: 40px;
 }
 
 
-/* --- Sections Styling --- */
 section {
     padding: 100px 0;
     border-bottom: 1px solid var(--border-color);
-    background-color: rgba(26, 26, 26, 0.9); /* Tambahkan background semi-transparan untuk readability di atas video */
+    background-color: rgba(26, 26, 26, 0.9);
 }
 
 section:last-of-type {
@@ -386,30 +381,26 @@ h2 i {
     font-size: 0.9em;
 }
 
-/* --- Animasi Elemen Muncul Saat Digulir (Fade-In & Slide-Up) --- */
 .animate-on-scroll {
-    opacity: 0; /* Mulai dari tidak terlihat */
-    transform: translateY(30px); /* Mulai sedikit di bawah posisi akhir */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Animasi transisi */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .animate-on-scroll.is-visible {
-    opacity: 1; /* Jadi terlihat */
-    transform: translateY(0); /* Kembali ke posisi aslinya */
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Delay tambahan untuk setiap kartu atau item agar muncul berurutan */
-/* Anda bisa menambahkan aturan delay untuk elemen lain jika mereka termasuk dalam .animate-on-scroll */
-/* Contoh untuk judul section jika Anda ingin mereka muncul setelah digulir */
-section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan delay untuk h2 section */
+section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; }
 
 .skill-category:nth-child(1).is-visible { transition-delay: 0.1s; }
 .skill-category:nth-child(2).is-visible { transition-delay: 0.2s; }
-/* Delay untuk project-card utama (3 pertama) */
+
 .project-card:nth-child(1).is-visible { transition-delay: 0.1s; }
 .project-card:nth-child(2).is-visible { transition-delay: 0.2s; }
 .project-card:nth-child(3).is-visible { transition-delay: 0.3s; }
-/* Delay untuk project-card di additional-projects */
+
 #additional-projects .project-card:nth-child(1).is-visible { transition-delay: 0.4s; }
 #additional-projects .project-card:nth-child(2).is-visible { transition-delay: 0.5s; }
 #additional-projects .project-card:nth-child(3).is-visible { transition-delay: 0.6s; }
@@ -423,98 +414,154 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
 .contact-section .contact-links a:nth-child(3).is-visible { transition-delay: 0.3s; }
 
 
-/* --- Skills Section --- */
+.skills-section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
     margin-top: 50px;
     text-align: left;
 }
 
 .skill-category {
-    background-color: var(--card-bg);
+    background-color: var(--skill-card-bg);
     padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 230, 230, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,230,230,0.05), rgba(0,230,230,0));
+    z-index: 0;
+    border-radius: 15px;
+    pointer-events: none;
 }
 
 .skill-category:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,230,230,0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,230,230,0.3);
+    border-color: var(--accent-blue);
 }
 
 .skill-category h3 {
     color: var(--accent-blue);
     margin-top: 0;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid rgba(0, 230, 230, 0.3);
     padding-bottom: 15px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
+    font-size: 2.2em;
+    position: relative;
+    z-index: 1;
 }
 
 .skill-category h3 i {
-    margin-right: 10px;
+    margin-right: 15px;
     color: var(--text-light);
+    font-size: 1.1em;
+    text-shadow: 0 0 8px rgba(0,230,230,0.5);
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .skill-category ul li {
-    margin-bottom: 12px;
-    font-size: 1.1em;
-    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    color: var(--secondary-text);
     display: flex;
     align-items: center;
-}
-
-.skill-category ul li::before {
-    content: '\2022';
-    color: var(--accent-blue);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-    font-size: 1.2em;
+    position: relative;
+    padding-left: 25px;
 }
 
 .skill-category ul li strong {
+    color: var(--text-light);
+    margin-right: 8px;
+    font-weight: 600;
+}
+
+.skill-category ul li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
     color: var(--accent-blue);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+}
+
+.skill-item-wrapper {
+    margin-bottom: 20px;
+}
+
+.skill-progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--skill-progress-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.skill-progress-fill {
+    height: 100%;
+    background-color: var(--skill-progress-fill);
+    border-radius: 4px;
+    width: var(--skill-level, 75%);
+    transition: width 0.8s ease-out;
 }
 
 
-/* --- Projects Section --- */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
     margin-top: 50px;
-    /* transition: max-height 0.5s ease-out, opacity 0.5s ease-out; */ /* Dipindahkan ke #additional-projects */
-    /* overflow: hidden; */ /* Dipindahkan ke #additional-projects */
+    align-items: stretch;
 }
 
-/* Gaya untuk kontainer proyek tambahan */
 #additional-projects {
-    display: grid; /* Penting untuk mempertahankan grid layout */
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
-    margin-top: 0; /* Hapus margin atas default untuk grid tersembunyi */
-    max-height: 0; /* Awalnya tersembunyi */
-    opacity: 0; /* Awalnya tidak terlihat */
-    overflow: hidden; /* Penting untuk transisi max-height */
-    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out; /* Transisi untuk slide dan fade */
-    grid-auto-rows: minmax(0, 1fr); /* Atur tinggi baris agar tidak memakan ruang kosong saat tersembunyi */
-    pointer-events: none; /* Mencegah interaksi saat tersembunyi */
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    pointer-events: none;
+    align-items: stretch;
 }
 
-#additional-projects.is-visible { /* Menggunakan is-visible untuk mengontrol tampilan */
-    max-height: 2000px; /* Nilai besar yang cukup untuk menampung semua proyek saat terlihat */
+#additional-projects.is-visible {
+    max-height: 2000px;
     opacity: 1;
-    pointer-events: auto; /* Izinkan interaksi saat terlihat */
-    margin-top: 40px; /* Tambahkan margin saat terlihat */
+    pointer-events: auto;
+    margin-top: 40px;
 }
-
 
 .project-card {
     background-color: var(--card-bg);
@@ -526,6 +573,8 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    
+    min-height: 550px;
 }
 
 .project-card:hover {
@@ -546,24 +595,27 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-card h3 {
     margin-top: 0;
     font-size: 1.8em;
     color: var(--text-light);
+    margin-bottom: 10px;
 }
 
 .project-card p {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--secondary-text);
+    flex-grow: 1;
 }
 
 .project-card .tech-stack {
     font-size: 0.95em;
     color: var(--accent-blue);
     margin-top: auto;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .project-card .tech-stack i {
     margin-right: 8px;
@@ -573,9 +625,9 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
-/* --- Experience Section --- */
 .job-entry {
     background-color: var(--card-bg);
     padding: 35px;
@@ -585,11 +637,10 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
-    /* Ini adalah inti dari pemusatan horizontal */
-    margin: 50px auto; /* Memberi margin atas/bawah 50px, dan auto untuk kiri/kanan */
-    max-width: 900px; /* Batasi lebar maksimum */
-    width: 90%; /* Ambil 90% dari lebar parent, akan di override oleh max-width jika lebih besar */
-    box-sizing: border-box; /* Pastikan padding dan border dihitung dalam total lebar/tinggi */
+    margin: 50px auto;
+    max-width: 900px;
+    width: 90%;
+    box-sizing: border-box;
 }
 
 .job-entry:hover {
@@ -627,15 +678,14 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     font-size: 1.05em;
 }
 
-.job-entry-buttons { /* Gaya untuk wadah tombol di job-entry */
+.job-entry-buttons {
     display: flex;
-    justify-content: flex-start; /* Sejajarkan ke kiri di desktop */
-    margin-top: 25px; /* Jarak dari konten di atasnya */
-    flex-wrap: wrap; /* Agar tombol wrap di mobile */
-    gap: 15px; /* Jarak antar tombol */
+    justify-content: flex-start;
+    margin-top: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* --- Contact Section --- */
 .contact-section p {
     text-align: center;
     max-width: 700px;
@@ -666,7 +716,6 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     transform: translateX(5px);
 }
 
-/* --- Footer --- */
 .footer {
     background-color: #0d0d0d;
     color: var(--secondary-text);
@@ -677,32 +726,30 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
 }
 
 
-/* --- Responsive Design --- */
 @media (min-width: 768px) {
     .hero-content {
-        flex-direction: row; /* Horizontal untuk desktop */
-        text-align: left; /* Teks rata kiri */
-        justify-content: center; /* Pusatkan konten horizontal */
-        align-items: center; /* Sejajarkan foto dan teks di tengah vertikal */
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
     }
 
     .hero-image {
-        margin-right: 60px; /* Jarak foto dari teks di desktop */
+        margin-right: 60px;
         margin-bottom: 0;
     }
 
     .hero-text {
-        justify-content: center; /* Pusatkan teks di desktop secara vertikal */
-        align-items: flex-start; /* Sejajarkan teks ke kiri di desktop */
+        justify-content: center;
+        align-items: flex-start;
     }
 
-    /* Ukuran font untuk desktop (bisa disesuaikan jika perlu) */
     .hero-text h1 {
-        font-size: 4.0em; /* Ukuran lebih besar untuk desktop */
+        font-size: 4.0em;
     }
     .hero-text h2 {
         font-size: 2.0em;
-        text-align: left; /* Rata kiri untuk subheading di desktop */
+        text-align: left;
     }
     .hero-text p {
         font-size: 1.0em;
@@ -719,17 +766,15 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     }
 
     .job-entry {
-        max-width: 900px; /* Pastikan max-width tetap di desktop */
-        /* margin-left: auto; margin-right: auto; sudah diatur di luar media query */
+        max-width: 900px;
     }
 
     .job-entry-buttons {
-        justify-content: flex-start; /* Pastikan rata kiri di desktop */
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 767px) {
-    /* Header di mobile */
     .header .container {
         flex-direction: row;
         justify-content: space-between;
@@ -767,30 +812,26 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
         width: 100%;
     }
 
-    /* Tampilkan ikon burger */
     .nav-toggle-label {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* Saat checkbox dicentang, tampilkan menu */
     .nav-toggle:checked ~ .nav-menu {
-        max-height: 300px; /* Sesuaikan dengan tinggi menu Anda */
+        max-height: 300px;
     }
 
-    /* Pengaturan umum untuk H1, H2 di mobile */
     h1 { font-size: 3em; }
     h2 { font-size: 2.2em; }
     section {
         padding: 60px 0;
     }
 
-    /* Pengaturan Hero Section di mobile */
     .hero-section {
-        padding-top: 80px; /* Cukup jauh dari navbar, sesuaikan jika perlu */
-        padding-bottom: 60px; /* Memberi ruang di bawah konten hero */
-        min-height: unset; /* Izinkan tinggi menyesuaikan konten */
+        padding-top: 80px;
+        padding-bottom: 60px;
+        min-height: unset;
     }
 
     .hero-image img {
@@ -799,21 +840,20 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
         margin-bottom: 25px;
     }
 
-    /* Ukuran font khusus untuk elemen teks di hero section pada mobile */
     .hero-text h1 {
-        font-size: 2.2em; /* Ukuran font H1 di mobile */
+        font-size: 2.2em;
         line-height: 1.2;
     }
     .hero-text h2 {
-        font-size: 1.4em; /* Ukuran font H2 di mobile */
-        text-align: center; /* Rata tengah untuk subheading di mobile */
-        min-height: 1.3em; /* Sesuaikan min-height untuk mobile juga */
+        font-size: 1.4em;
+        text-align: center;
+        min-height: 1.3em;
     }
     .hero-text p {
-        font-size: 0.95em; /* Ukuran font paragraf di mobile */
+        font-size: 0.95em;
         line-height: 1.6;
-        text-align: center; /* Pastikan teks paragraf rata tengah di mobile */
-        max-width: 90%; /* Batasi lebar paragraf agar tidak terlalu lebar di layar sempit */
+        text-align: center;
+        max-width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -824,12 +864,14 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
         width: 80%;
     }
 
-    .skills-grid, .project-grid {
+    .skills-grid, .project-grid, #additional-projects {
         grid-template-columns: 1fr;
+        width: 100%;
     }
 
     .project-card .card-buttons {
         flex-direction: column;
+        align-items: center;
     }
     .btn-card {
         width: 89%;
@@ -838,27 +880,54 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     }
 
     .hero-text {
-        align-items: center; /* Pusatkan teks di mobile */
+        align-items: center;
     }
 
-    .job-entry { /* Penyesuaian di mobile untuk job-entry */
-        width: 95%; /* Mungkin sedikit lebih lebar di mobile agar tidak terlalu sempit */
-        padding: 25px; /* Sedikit kurangi padding di mobile jika perlu */
+    .job-entry {
+        width: 95%;
+        padding: 25px;
     }
 
     .job-entry-buttons {
-        flex-direction: column; /* Tombol vertikal di mobile */
-        align-items: center; /* Pusatkan tombol di mobile */
+        flex-direction: column;
+        align-items: center;
     }
     .job-entry-buttons .btn-card {
-        width: 89%; /* Tombol memenuhi lebar di mobile */
-        margin-right: 0; /* Hapus margin kanan di mobile */
-        margin-bottom: 10px; /* Jarak vertikal antar tombol */
+        width: 89%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .skill-category {
+        padding: 25px;
+    }
+
+    .skill-category h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .skill-category h3 i {
+        font-size: 1em;
+    }
+
+    .skill-category ul li {
+        font-size: 1em;
+        margin-bottom: 12px;
+        padding-left: 20px;
+    }
+
+    .project-card {
+        min-height: 450px;
     }
 }
 
 
-/* --- Video Background Styling --- */
 .video-background {
     position: fixed;
     top: 0;
@@ -866,7 +935,7 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -2; /* Penting: Pastikan ini di bawah semua konten */
+    z-index: -2;
 }
 
 .video-background video {
@@ -878,6 +947,6 @@ section h2.animate-on-scroll.is-visible { transition-delay: 0.05s; } /* Tambahan
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Pastikan video menutupi seluruh area tanpa distorsi */
-    filter: brightness(0.6) grayscale(0.2); /* Opsional: Membuat video sedikit lebih gelap dan desaturasi */
+    object-fit: cover;
+    filter: brightness(0.6) grayscale(0.2);
 }
