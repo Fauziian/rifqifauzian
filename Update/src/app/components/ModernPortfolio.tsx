@@ -72,11 +72,48 @@ interface ModernPortfolioProps {
   onViewWorkPhotos: () => void;
 }
 
+const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE"; // Get your free access key from https://web3forms.com/
+
 export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPortfolioProps) {
   const [stars, setStars] = useState<{ x: number; y: number; size: number; delay: number }[]>([]);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | 'missing_key' | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY_HERE" || !WEB3FORMS_ACCESS_KEY) {
+      setSubmitStatus('missing_key');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSubmitStatus('success');
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const newStars = Array.from({ length: 100 }, () => ({
@@ -889,7 +926,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name Input */}
                   <div className="space-y-2">
@@ -899,6 +936,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       placeholder="e.g. John Doe"
                       className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
                       required
@@ -913,6 +951,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       placeholder="e.g. john@example.com"
                       className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
                       required
@@ -928,6 +967,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     placeholder="How can I help you?"
                     className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
                     required
@@ -941,6 +981,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     placeholder="Your message here..."
                     className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm resize-none"
@@ -948,13 +989,34 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                   />
                 </div>
 
+                {/* Form Submit Status Messages */}
+                {submitStatus === 'success' && (
+                  <p className="font-['Inter'] text-sm text-[#00C875] bg-[#00C875]/10 border border-[#00C875]/20 rounded-xl p-3.5 text-center">
+                    Message sent successfully! Thank you.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="font-['Inter'] text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl p-3.5 text-center">
+                    Failed to send message. Please try again or email directly.
+                  </p>
+                )}
+                {submitStatus === 'missing_key' && (
+                  <div className="font-['Inter'] text-sm text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 text-center space-y-1">
+                    <p className="font-semibold">⚠️ Web3Forms Access Key is missing.</p>
+                    <p className="text-xs text-white/70">
+                      Please generate a free key from <a href="https://web3forms.com" target="_blank" rel="noreferrer" className="underline hover:text-amber-400">web3forms.com</a> and paste it into <code>ModernPortfolio.tsx</code>.
+                    </p>
+                  </div>
+                )}
+
                 {/* Send Button */}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-[#00A8FF] to-[#00C875] hover:from-[#0096e6] hover:to-[#00b368] text-white rounded-xl font-['Inter'] font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-[#00A8FF] to-[#00C875] hover:from-[#0096e6] hover:to-[#00b368] text-white rounded-xl font-['Inter'] font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send Message</span>
+                  <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                 </button>
               </form>
             </motion.div>
