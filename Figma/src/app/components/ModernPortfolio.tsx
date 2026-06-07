@@ -44,37 +44,23 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div 
+      className="min-h-screen bg-[#07090b] text-[#E8E8E8] overflow-x-hidden relative"
+      style={{
+        backgroundImage: `
+          radial-gradient(circle at 10% 25%, rgba(0, 200, 117, 0.08), transparent 35%),
+          radial-gradient(circle at 85% 65%, rgba(0, 168, 255, 0.08), transparent 35%),
+          linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+        `,
+        backgroundSize: '100% 100%, 100% 100%, 45px 45px, 45px 45px',
+      }}
+    >
       {/* Scroll Progress Bar */}
       <ScrollProgress />
 
       {/* Navbar */}
       <Navbar />
-
-      {/* Animated Stars Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        {stars.map((star, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-            }}
-            animate={{
-              opacity: [0.2, 0.8, 0.2],
-              scale: [0.8, 1.2, 0.8],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: star.delay,
-            }}
-          />
-        ))}
-      </div>
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center px-16 relative pt-24">
@@ -85,52 +71,59 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <motion.p
-              className="font-['Inter'] text-gray-400 mb-4"
-              style={{ fontSize: '1rem', letterSpacing: '0.2em' }}
+            {/* Green Pulse Badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00C875]/10 border border-[#00C875]/20 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
             >
-              HELLO, I'M
-            </motion.p>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C875] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C875]"></span>
+              </span>
+              <span className="font-['Inter'] text-[10px] tracking-widest font-bold text-[#00C875] uppercase">
+                AVAILABLE FOR WORK
+              </span>
+            </motion.div>
 
             <motion.h1
-              className="font-['Syne'] font-bold mb-6"
-              style={{ fontSize: '5rem', lineHeight: '1', letterSpacing: '-0.02em' }}
+              className="font-['Syne'] font-extrabold mb-4 leading-none tracking-tight text-white"
+              style={{ fontSize: '5.2rem' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-white">RIFQI</span>
+              Frontend
               <br />
-              <span className="text-gray-500">FAUZI</span>
-              <br />
-              <span className="text-white">ANWAR</span>
+              <span className="text-[#E8E8E8]">Developer</span>
             </motion.h1>
 
             <motion.h2
-              className="font-['Montserrat'] font-semibold text-[#00C875] mb-8"
-              style={{ fontSize: '1.5rem', letterSpacing: '0.05em' }}
+              className="font-['Montserrat'] font-bold text-white/50 mb-6 tracking-wide"
+              style={{ fontSize: '1.25rem' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Network Engineer | Software Engineer | Game Developer | Designer
+              Junior Programmer _
             </motion.h2>
 
             <motion.p
-              className="font-['Inter'] text-gray-400 leading-relaxed mb-12 max-w-lg"
-              style={{ fontSize: '1.125rem', lineHeight: '1.8' }}
+              className="font-['Inter'] text-white/60 leading-relaxed mb-10 max-w-lg"
+              style={{ fontSize: '1.05rem' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.5 }}
             >
-              Aspiring software/network engineer with strong foundation in full-stack web development, 2D Java game programming, & Mikrotik configuration.
+              Menciptakan website menarik dengan tampilan clean, responsif, dan elegan, yang berfokus pada pengalaman digital yang menarik dan mudah digunakan.
             </motion.p>
 
             <motion.div
               className="flex gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.6 }}
             >
               <a
                 href="#projects"
