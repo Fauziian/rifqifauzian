@@ -75,12 +75,13 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
   const [stars, setStars] = useState<{ x: number; y: number; size: number; delay: number }[]>([]);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const newStars = Array.from({ length: 80 }, () => ({
+    const newStars = Array.from({ length: 100 }, () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 2 + 0.5,
+      size: Math.random() * 1.5 + 0.5,
       delay: Math.random() * 3,
     }));
     setStars(newStars);
@@ -89,8 +90,16 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       setShowScrollTop(window.scrollY > 500);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const sections = ['hero', 'skills', 'projects', 'experience', 'contact'];
@@ -100,18 +109,93 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
   };
 
   return (
-    <div 
-      className="min-h-screen bg-[#07090b] text-[#E8E8E8] overflow-x-hidden relative"
-      style={{
-        backgroundImage: `
-          radial-gradient(circle at 10% 25%, rgba(0, 200, 117, 0.08), transparent 35%),
-          radial-gradient(circle at 85% 65%, rgba(0, 168, 255, 0.08), transparent 35%),
-          linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
-        `,
-        backgroundSize: '100% 100%, 100% 100%, 45px 45px, 45px 45px',
-      }}
-    >
+    <div className="min-h-screen bg-[#07090b] text-[#E8E8E8] overflow-x-hidden relative">
+      {/* Dynamic Grid Overlay with Mask */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+          `,
+          backgroundSize: '45px 45px',
+          maskImage: 'radial-gradient(circle at center, black, transparent 95%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 95%)',
+        }}
+      />
+
+      {/* Floating Glowing Orbs / Aurora Effect */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <motion.div
+          className="absolute w-[500px] h-[500px] rounded-full bg-[#00C875]/10 blur-[130px]"
+          animate={{
+            x: [0, 80, -40, 0],
+            y: [0, -80, 40, 0],
+            scale: [1, 1.15, 0.9, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{ top: '10%', left: '5%' }}
+        />
+        <motion.div
+          className="absolute w-[600px] h-[600px] rounded-full bg-[#00A8FF]/8 blur-[160px]"
+          animate={{
+            x: [0, -100, 60, 0],
+            y: [0, 80, -60, 0],
+            scale: [1, 0.95, 1.1, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{ top: '40%', right: '8%' }}
+        />
+        <motion.div
+          className="absolute w-[550px] h-[550px] rounded-full bg-purple-500/8 blur-[140px]"
+          animate={{
+            x: [0, 60, -80, 0],
+            y: [0, -40, 100, 0],
+            scale: [1, 1.1, 0.95, 1],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{ bottom: '25%', left: '12%' }}
+        />
+      </div>
+
+      {/* Twinkling Stars Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {stars.map((star, i) => (
+          <div
+            key={i}
+            className="absolute bg-white rounded-full"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              opacity: 0.15 + Math.random() * 0.5,
+              animation: `twinkle ${2 + Math.random() * 4}s infinite ease-in-out`,
+              animationDelay: `${star.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Mouse Magnetic Spotlight Glow */}
+      <div
+        className="pointer-events-none fixed inset-0 z-10 transition-opacity duration-300 hidden md:block"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 200, 117, 0.02) 0%, rgba(0, 168, 255, 0.015) 50%, transparent 80%)`,
+        }}
+      />
       {/* Scroll Progress Bar */}
       <ScrollProgress />
 
@@ -350,13 +434,14 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center mt-12 md:mt-0"
+              className="relative flex items-center justify-center mt-12 md:mt-0 cursor-pointer"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: 8 }}
+              whileHover={{ rotate: 0, scale: 1.05, y: -10 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col transition-shadow duration-300 hover:shadow-[#00C875]/25">
                 <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
                   <img src={softwareEngineerImage} alt="Software Engineer" className="w-full h-full object-cover" />
                 </div>
@@ -377,13 +462,14 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
           >
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center order-last md:order-first mt-12 md:mt-0"
+              className="relative flex items-center justify-center order-last md:order-first mt-12 md:mt-0 cursor-pointer"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: -8 }}
+              whileHover={{ rotate: 0, scale: 1.05, y: -10 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col transition-shadow duration-300 hover:shadow-[#00A8FF]/25">
                 <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
                   <img src={networkEngineerImage} alt="Network Engineer" className="w-full h-full object-cover" />
                 </div>
@@ -476,13 +562,14 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center mt-12 md:mt-0"
+              className="relative flex items-center justify-center mt-12 md:mt-0 cursor-pointer"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: 8 }}
+              whileHover={{ rotate: 0, scale: 1.05, y: -10 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col transition-shadow duration-300 hover:shadow-purple-500/25">
                 <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
                   <img src={robloxGameImage} alt="Roblox Game" className="w-full h-full object-cover" />
                 </div>
