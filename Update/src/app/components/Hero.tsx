@@ -6,7 +6,7 @@ export function Hero() {
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Column - Typography */}
         <div className="space-y-6">
-          <h1 className="font-['Syne'] font-bold tracking-tight" style={{ fontSize: '4rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
+          <h1 className="font-['Syne'] font-bold tracking-tight text-5xl md:text-[4rem]" style={{ lineHeight: '1.1', letterSpacing: '-0.02em' }}>
             RIFQI FAUZI ANWAR
           </h1>
           <h2 className="font-['Montserrat'] font-semibold text-[#00C875]" style={{ fontSize: '1.5rem', lineHeight: '1.4', letterSpacing: '0.02em' }}>
@@ -16,10 +16,10 @@ export function Hero() {
             Aspiring software/network engineer w/ strong foundation in full-stack web dev, 2D Java game programming, & Mikrotik configuration. Passionate about efficient, user-oriented digital solutions via clean design & practical network integration.
           </p>
 
-          <div className="flex gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a
               href="#projects"
-              className="group flex items-center gap-2 px-8 py-4 bg-[#00C875] text-[#0D1114] rounded-full font-['Inter'] font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-[#00C875]/40 hover:scale-105"
+              className="group flex items-center justify-center gap-2 px-6 md:px-8 py-4 bg-[#00C875] text-[#0D1114] rounded-full font-['Inter'] font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-[#00C875]/40 hover:scale-105"
               style={{ fontSize: '1rem' }}
             >
               View My Projects
@@ -29,7 +29,7 @@ export function Hero() {
               href="https://drive.google.com/file/d/1hKpaADxq1aXtyPR8SCDqiWTc4B7EosRf/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-8 py-4 backdrop-blur-xl bg-white/5 border border-white/10 text-white rounded-full font-['Inter'] font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/20"
+              className="flex items-center justify-center gap-2 px-6 md:px-8 py-4 backdrop-blur-xl bg-white/5 border border-white/10 text-white rounded-full font-['Inter'] font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/20"
               style={{ fontSize: '1rem' }}
             >
               <FileText className="w-5 h-5" />

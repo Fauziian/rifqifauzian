@@ -10,6 +10,7 @@ import { ScrollProgress } from './ScrollProgress';
 // Import project images
 import mountYHImage from '../../imports/6447ee5e-15ca-4b84-b04c-738fda31cb29.png';
 import mountVelmornImage from '../../imports/thumb3.png';
+import robloxGameImage from '../../imports/roblox_game.jpg';
 
 const roles = [
   'Network Engineer',
@@ -116,7 +117,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       <Navbar />
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center px-16 relative pt-24">
+      <section id="hero" className="min-h-screen flex items-center justify-center px-6 md:px-16 relative pt-24">
         <div className="max-w-7xl w-full grid grid-cols-2 gap-32 items-center">
           {/* Left - Typography */}
           <motion.div
@@ -202,11 +203,11 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-16 py-32">
+      <section id="about" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
         <div className="max-w-6xl w-full">
           <motion.h2
-            className="font-['Syne'] font-bold mb-20 text-center"
-            style={{ fontSize: '4rem', letterSpacing: '-0.02em' }}
+            className="font-['Syne'] font-bold mb-20 text-center text-5xl md:text-[4rem]"
+            style={{ letterSpacing: '-0.02em' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -214,7 +215,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             About <span className="text-gray-600">Me</span>
           </motion.h2>
 
-          <div className="grid grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <motion.div
               className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-[#00C875]/50 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
@@ -277,7 +278,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               I'm passionate about creating <span className="text-[#00C875] font-semibold">efficient, user-oriented digital solutions</span> through clean design and practical implementation. With experience in both <span className="text-[#00A8FF] font-semibold">network infrastructure</span> and <span className="text-[#00C875] font-semibold">software development</span>, I bring a unique perspective to every project, ensuring both technical excellence and user satisfaction.
             </p>
 
-            <div className="grid grid-cols-4 gap-8 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="text-center">
                 <p className="font-['Syne'] font-bold text-4xl text-[#00C875] mb-2">9+</p>
                 <p className="font-['Inter'] text-gray-400">Projects</p>
@@ -300,10 +301,10 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen flex items-center justify-center px-16 py-32">
+      <section id="skills" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
         <div className="max-w-7xl w-full">
           <motion.div
-            className="grid grid-cols-2 gap-16 mb-32"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-32 items-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -312,8 +313,8 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             {/* Software Engineering */}
             <div>
               <h3
-                className="font-['Syne'] font-bold mb-12"
-                style={{ fontSize: '4rem', lineHeight: '1', letterSpacing: '-0.02em' }}
+                className="font-['Syne'] font-bold mb-12 text-5xl md:text-[4rem]"
+                style={{ lineHeight: '1', letterSpacing: '-0.02em' }}
               >
                 Software
                 <br />
@@ -347,7 +348,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center"
+              className="relative flex items-center justify-center mt-12 md:mt-0"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: 8 }}
               viewport={{ once: true }}
@@ -369,7 +370,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
           >
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center"
+              className="relative flex items-center justify-center order-last md:order-first mt-12 md:mt-0"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: -8 }}
               viewport={{ once: true }}
@@ -381,10 +382,10 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             </motion.div>
 
             {/* Network Skills */}
-            <div>
+            <div className="order-first md:order-last">
               <h3
-                className="font-['Syne'] font-bold mb-12"
-                style={{ fontSize: '4rem', lineHeight: '1', letterSpacing: '-0.02em' }}
+                className="font-['Syne'] font-bold mb-12 text-5xl md:text-[4rem]"
+                style={{ lineHeight: '1', letterSpacing: '-0.02em' }}
               >
                 Network
                 <br />
@@ -419,7 +420,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
           {/* Game Development */}
           <motion.div
-            className="grid grid-cols-2 gap-16"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -428,8 +429,8 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             {/* Game Dev Skills */}
             <div>
               <h3
-                className="font-['Syne'] font-bold mb-12"
-                style={{ fontSize: '4rem', lineHeight: '1', letterSpacing: '-0.02em' }}
+                className="font-['Syne'] font-bold mb-12 text-5xl md:text-[4rem]"
+                style={{ lineHeight: '1', letterSpacing: '-0.02em' }}
               >
                 Game
                 <br />
@@ -463,14 +464,19 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
             {/* Tilted Photo */}
             <motion.div
-              className="relative flex items-center justify-center"
+              className="relative flex items-center justify-center mt-12 md:mt-0"
               initial={{ opacity: 0, rotate: 0 }}
               whileInView={{ opacity: 1, rotate: 8 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3">
-                <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-black rounded-xl"></div>
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+                <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
+                  <img src={robloxGameImage} alt="Roblox Game" className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-grow flex items-center justify-center">
+                  <span className="font-['Syne'] text-black text-xs font-bold tracking-wider">MOUNT YH</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -478,11 +484,11 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex items-center justify-center px-16 py-32">
+      <section id="projects" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
         <div className="max-w-7xl w-full">
           <motion.h2
-            className="font-['Syne'] font-bold mb-20"
-            style={{ fontSize: '4rem', letterSpacing: '-0.02em' }}
+            className="font-['Syne'] font-bold mb-20 text-5xl md:text-[4rem]"
+            style={{ letterSpacing: '-0.02em' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -655,7 +661,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="min-h-screen flex items-center justify-center px-16 py-32">
+      <section id="experience" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
         <div className="max-w-5xl w-full">
           <motion.h2
             className="font-['Syne'] font-bold mb-20"
@@ -723,7 +729,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       <Achievements />
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center px-16 py-32">
+      <section id="contact" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
         <div className="max-w-5xl w-full">
           <motion.h2
             className="font-['Syne'] font-bold text-center mb-12"

@@ -126,7 +126,7 @@ export function TechStack() {
   };
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center px-16 py-32 bg-[#07090b]">
+    <section id="skills" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32 bg-[#07090b]">
       <div className="max-w-7xl w-full">
         <motion.h2
           className="font-['Syne'] font-bold mb-20"

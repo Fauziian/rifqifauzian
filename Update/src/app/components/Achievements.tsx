@@ -46,7 +46,7 @@ export function Achievements() {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-16 py-32">
+    <section className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
       <div className="max-w-7xl w-full">
         <motion.h2
           className="font-['Syne'] font-bold mb-20 text-center"
