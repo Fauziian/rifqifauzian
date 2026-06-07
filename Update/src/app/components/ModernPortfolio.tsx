@@ -11,6 +11,8 @@ import { ScrollProgress } from './ScrollProgress';
 import mountYHImage from '../../imports/6447ee5e-15ca-4b84-b04c-738fda31cb29.png';
 import mountVelmornImage from '../../imports/thumb3.png';
 import robloxGameImage from '../../imports/roblox_game.jpg';
+import networkEngineerImage from '../../imports/network_engineer.png';
+import softwareEngineerImage from '../../imports/software_engineer.png';
 
 const roles = [
   'Network Engineer',
@@ -354,8 +356,13 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3">
-                <div className="w-full h-full bg-gradient-to-br from-[#00C875]/20 to-black rounded-xl"></div>
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+                <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
+                  <img src={softwareEngineerImage} alt="Software Engineer" className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-grow flex items-center justify-center">
+                  <span className="font-['Syne'] text-black text-xs font-bold tracking-wider">CODING MODE</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -376,8 +383,13 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3">
-                <div className="w-full h-full bg-gradient-to-br from-[#00A8FF]/20 to-black rounded-xl"></div>
+              <div className="w-72 h-80 bg-white rounded-2xl shadow-2xl p-3 flex flex-col">
+                <div className="w-full h-[85%] overflow-hidden rounded-xl bg-gray-900">
+                  <img src={networkEngineerImage} alt="Network Engineer" className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-grow flex items-center justify-center">
+                  <span className="font-['Syne'] text-black text-xs font-bold tracking-wider">ROUTER CONFIG</span>
+                </div>
               </div>
             </motion.div>
 
