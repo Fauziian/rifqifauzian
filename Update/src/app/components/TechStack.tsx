@@ -21,6 +21,13 @@ export function TechStack() {
       icon: 'https://cdn.simpleicons.org/php/777BB4'
     },
     {
+      name: 'Node.js',
+      category: 'Backend',
+      level: 80,
+      color: '#00C875',
+      icon: 'https://cdn.simpleicons.org/nodedotjs/339933'
+    },
+    {
       name: 'React.js',
       category: 'Frontend',
       level: 80,
@@ -61,6 +68,13 @@ export function TechStack() {
       level: 90,
       color: '#00A8FF',
       icon: 'https://cdn.simpleicons.org/mikrotik/1f618a'
+    },
+    {
+      name: 'Cisco',
+      category: 'Network',
+      level: 85,
+      color: '#00A8FF',
+      icon: 'https://cdn.simpleicons.org/cisco/049FD9'
     },
     {
       name: 'TCP/IP',
@@ -107,11 +121,11 @@ export function TechStack() {
   ];
 
   const categories = [
-    { name: 'Backend', count: 2, color: '#00C875' },
+    { name: 'Backend', count: 3, color: '#00C875' },
     { name: 'Frontend', count: 3, color: '#00C875' },
     { name: 'Database', count: 1, color: '#00C875' },
     { name: 'Framework', count: 1, color: '#00C875' },
-    { name: 'Network', count: 3, color: '#00A8FF' },
+    { name: 'Network', count: 4, color: '#00A8FF' },
     { name: 'Game Dev', count: 4, color: 'rgb(168, 85, 247)' }
   ];
 

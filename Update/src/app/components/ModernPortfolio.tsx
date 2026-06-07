@@ -499,6 +499,13 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
+                  <Cpu className="w-6 h-6 text-[#00A8FF]" />
+                  <div>
+                    <p className="font-['Inter'] text-gray-400 text-sm">Cisco</p>
+                    <p className="font-['Inter'] text-white">Switching, Routing, Cisco IOS</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
                   <Network className="w-6 h-6 text-[#00A8FF]" />
                   <div>
                     <p className="font-['Inter'] text-gray-400 text-sm">Concepts</p>
