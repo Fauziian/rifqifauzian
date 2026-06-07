@@ -72,7 +72,7 @@ interface ModernPortfolioProps {
   onViewWorkPhotos: () => void;
 }
 
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE"; // Get your free access key from https://web3forms.com/
+const WEB3FORMS_ACCESS_KEY = "bdaf39e6-aa5f-4cf6-964e-d3daf9ca508d"; // Get your free access key from https://web3forms.com/
 
 export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPortfolioProps) {
   const [stars, setStars] = useState<{ x: number; y: number; size: number; delay: number }[]>([]);
