@@ -59,7 +59,7 @@ export function WelcomeScreen() {
         </div>
 
         {/* Main Text Content */}
-        <div className="min-h-[180px] flex flex-col items-center justify-center text-center w-full">
+        <div className="h-[220px] flex flex-col items-center justify-center text-center w-full">
           <AnimatePresence mode="wait">
             {stage === 1 && (
               <motion.h1
