@@ -8,3 +8,56 @@
     transform: scale(1.25);
   }
 }
+
+@keyframes pan-grid {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 90px 90px;
+  }
+}
+
+.animated-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  background-image: 
+    linear-gradient(to right, rgba(0, 200, 117, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 200, 117, 0.04) 1px, transparent 1px);
+  background-size: 45px 45px;
+  animation: pan-grid 25s linear infinite;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+}
+
+.animated-grid-bg-blue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: 
+    linear-gradient(to right, rgba(0, 168, 255, 0.03) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(0, 168, 255, 0.03) 1.5px, transparent 1.5px);
+  background-size: 90px 90px;
+  animation: pan-grid 45s linear infinite reverse;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 98%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 98%);
+}
+
+/* Font Overrides to Outfit and Plus Jakarta Sans */
+.font-\[\'Syne\'\] {
+  font-family: 'Outfit', sans-serif !important;
+  letter-spacing: -0.03em !important;
+}
+
+.font-\[\'Montserrat\'\] {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.font-\[\'Inter\'\] {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}

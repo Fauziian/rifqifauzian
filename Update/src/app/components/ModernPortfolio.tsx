@@ -109,28 +109,46 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
   };
 
   return (
-    <div className="min-h-screen bg-[#07090b] text-[#E8E8E8] overflow-x-hidden relative">
-      {/* Dynamic Grid Overlay with Mask */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-0 opacity-40"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
-          `,
-          backgroundSize: '45px 45px',
-          maskImage: 'radial-gradient(circle at center, black, transparent 95%)',
-          WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 95%)',
-        }}
-      />
+    <div className="min-h-screen bg-slate-950 bg-gradient-to-b from-slate-950 via-[#0a0f1d] to-[#04060c] text-[#E8E8E8] overflow-x-hidden relative">
+      {/* Animated Parallax Cyber Grid Overlays */}
+      <div className="animated-grid-bg" />
+      <div className="animated-grid-bg-blue" />
 
       {/* Floating Glowing Orbs / Aurora Effect */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div
-          className="absolute w-[500px] h-[500px] rounded-full bg-[#00C875]/10 blur-[130px]"
+          className="absolute w-[650px] h-[650px] rounded-full bg-[#00C875]/12 blur-[150px]"
           animate={{
-            x: [0, 80, -40, 0],
-            y: [0, -80, 40, 0],
+            x: [0, 100, -50, 0],
+            y: [0, -90, 50, 0],
+            scale: [1, 1.2, 0.85, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{ top: '5%', left: '2%' }}
+        />
+        <motion.div
+          className="absolute w-[750px] h-[750px] rounded-full bg-[#00A8FF]/10 blur-[170px]"
+          animate={{
+            x: [0, -120, 80, 0],
+            y: [0, 90, -70, 0],
+            scale: [1, 0.9, 1.15, 1],
+          }}
+          transition={{
+            duration: 27,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{ top: '35%', right: '4%' }}
+        />
+        <motion.div
+          className="absolute w-[700px] h-[700px] rounded-full bg-purple-500/10 blur-[160px]"
+          animate={{
+            x: [0, 80, -90, 0],
+            y: [0, -50, 110, 0],
             scale: [1, 1.15, 0.9, 1],
           }}
           transition={{
@@ -138,35 +156,21 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          style={{ top: '10%', left: '5%' }}
+          style={{ bottom: '20%', left: '8%' }}
         />
         <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full bg-[#00A8FF]/8 blur-[160px]"
+          className="absolute w-[600px] h-[600px] rounded-full bg-[#FF007A]/6 blur-[145px]"
           animate={{
-            x: [0, -100, 60, 0],
-            y: [0, 80, -60, 0],
-            scale: [1, 0.95, 1.1, 1],
+            x: [0, -70, 60, 0],
+            y: [0, 80, -90, 0],
+            scale: [0.9, 1.1, 0.95, 0.9],
           }}
           transition={{
-            duration: 30,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          style={{ top: '40%', right: '8%' }}
-        />
-        <motion.div
-          className="absolute w-[550px] h-[550px] rounded-full bg-purple-500/8 blur-[140px]"
-          animate={{
-            x: [0, 60, -80, 0],
-            y: [0, -40, 100, 0],
-            scale: [1, 1.1, 0.95, 1],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ bottom: '25%', left: '12%' }}
+          style={{ bottom: '45%', right: '15%' }}
         />
       </div>
 
