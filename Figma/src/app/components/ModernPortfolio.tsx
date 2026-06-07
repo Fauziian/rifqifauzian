@@ -11,6 +11,58 @@ import { ScrollProgress } from './ScrollProgress';
 import mountYHImage from '../../imports/6447ee5e-15ca-4b84-b04c-738fda31cb29.png';
 import mountVelmornImage from '../../imports/thumb3.png';
 
+const roles = [
+  'Network Engineer',
+  'Software Engineer',
+  'Game Developer',
+  'Designer'
+];
+
+function Typewriter() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(120);
+
+  useEffect(() => {
+    let timer: any;
+    const currentFullText = roles[roleIndex];
+
+    const handleType = () => {
+      if (!isDeleting) {
+        setDisplayText((prev) => currentFullText.substring(0, prev.length + 1));
+        
+        if (displayText === currentFullText) {
+          setTypingSpeed(1800);
+          setIsDeleting(true);
+        } else {
+          setTypingSpeed(90);
+        }
+      } else {
+        setDisplayText((prev) => currentFullText.substring(0, prev.length - 1));
+
+        if (displayText === '') {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+          setTypingSpeed(400);
+        } else {
+          setTypingSpeed(40);
+        }
+      }
+    };
+
+    timer = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, roleIndex, typingSpeed]);
+
+  return (
+    <span className="inline-block relative">
+      <span className="text-[#00C875]">{displayText}</span>
+      <span className="ml-1 inline-block w-0.5 h-6 bg-[#00C875] animate-pulse align-middle"></span>
+    </span>
+  );
+}
+
 interface ModernPortfolioProps {
   onViewPKLPhotos: () => void;
   onViewWorkPhotos: () => void;
@@ -71,52 +123,45 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            {/* Green Pulse Badge */}
-            <motion.div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00C875]/10 border border-[#00C875]/20 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
+            <motion.p
+              className="font-['Inter'] text-gray-400 mb-4"
+              style={{ fontSize: '1rem', letterSpacing: '0.2em' }}
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C875] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C875]"></span>
-              </span>
-              <span className="font-['Inter'] text-[10px] tracking-widest font-bold text-[#00C875] uppercase">
-                AVAILABLE FOR WORK
-              </span>
-            </motion.div>
+              HELLO, I'M
+            </motion.p>
 
             <motion.h1
-              className="font-['Syne'] font-extrabold mb-4 leading-none tracking-tight text-white"
-              style={{ fontSize: '5.2rem' }}
+              className="font-['Syne'] font-bold mb-6"
+              style={{ fontSize: '5rem', lineHeight: '1', letterSpacing: '-0.02em' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Frontend
+              <span className="text-white">RIFQI</span>
               <br />
-              <span className="text-[#E8E8E8]">Developer</span>
+              <span className="text-gray-500">FAUZI</span>
+              <br />
+              <span className="text-white">ANWAR</span>
             </motion.h1>
 
             <motion.h2
-              className="font-['Montserrat'] font-bold text-white/50 mb-6 tracking-wide"
-              style={{ fontSize: '1.25rem' }}
+              className="font-['Montserrat'] font-semibold text-[#00C875] mb-8 min-h-[40px] flex items-center"
+              style={{ fontSize: '1.5rem', letterSpacing: '0.05em' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Junior Programmer _
+              <Typewriter />
             </motion.h2>
 
             <motion.p
-              className="font-['Inter'] text-white/60 leading-relaxed mb-10 max-w-lg"
-              style={{ fontSize: '1.05rem' }}
+              className="font-['Inter'] text-gray-400 leading-relaxed mb-12 max-w-lg"
+              style={{ fontSize: '1.125rem', lineHeight: '1.8' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.6 }}
             >
-              Menciptakan website menarik dengan tampilan clean, responsif, dan elegan, yang berfokus pada pengalaman digital yang menarik dan mudah digunakan.
+              Aspiring software/network engineer with strong foundation in full-stack web development, 2D Java game programming, & Mikrotik configuration.
             </motion.p>
 
             <motion.div

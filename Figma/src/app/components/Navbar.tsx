@@ -25,11 +25,11 @@ export function Navbar() {
         {/* Logo */}
         <motion.a
           href="#hero"
-          className="font-['Syne'] font-bold text-2xl tracking-tight lowercase"
+          className="font-['Syne'] font-bold text-2xl tracking-wider"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          rifqi<span className="text-[#00C875]">.dev</span>
+          RIFQI <span className="text-[#00C875]">FAUZI</span>
         </motion.a>
 
         {/* Desktop Navigation */}
