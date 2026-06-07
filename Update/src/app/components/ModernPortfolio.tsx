@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, Instagram, Youtube, Music, FileText, ExternalLink, Code2, Network, Server, Shield, Briefcase, Award, Gamepad2, Cpu, Database, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Instagram, Youtube, Music, FileText, ExternalLink, Code2, Network, Server, Shield, Briefcase, Award, Gamepad2, Cpu, Database, ArrowUp, Phone, MapPin, Send } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { DraggableCard } from './DraggableCard';
+import { Experience } from './Experience';
 import { Achievements } from './Achievements';
 import { TechStack } from './TechStack';
 import { ScrollProgress } from './ScrollProgress';
@@ -771,66 +772,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
-        <div className="max-w-5xl w-full">
-          <motion.h2
-            className="font-['Syne'] font-bold mb-20"
-            style={{ fontSize: '4rem', letterSpacing: '-0.02em' }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Professional
-            <br />
-            <span className="text-gray-600">Experience</span>
-          </motion.h2>
-
-          <div className="space-y-16">
-            <motion.div
-              className="border-l-4 border-[#00C875] pl-12"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="font-['Montserrat'] font-bold text-2xl mb-2">Field Work Practice (PKL)</h3>
-              <p className="font-['Inter'] text-[#00C875] mb-4">PT. Wastama • Jan-Mar 2020</p>
-              <ul className="space-y-2 mb-6 font-['Inter'] text-gray-400">
-                <li>• Mikrotik configuration and network setup</li>
-                <li>• Point-to-Point Triangle tower installation</li>
-                <li>• QoS bandwidth management</li>
-              </ul>
-              <button
-                onClick={onViewPKLPhotos}
-                className="px-6 py-3 border border-[#00C875]/30 rounded-full hover:bg-[#00C875]/10"
-              >
-                View Photos
-              </button>
-            </motion.div>
-
-            <motion.div
-              className="border-l-4 border-[#00A8FF] pl-12"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="font-['Montserrat'] font-bold text-2xl mb-2">Production Operator</h3>
-              <p className="font-['Inter'] text-[#00A8FF] mb-4">PT. Asahi Agung Abadi Mandiri • Nov 2021-Aug 2023</p>
-              <ul className="space-y-2 mb-6 font-['Inter'] text-gray-400">
-                <li>• High-capacity press machine operations</li>
-                <li>• Quality control and measurements</li>
-                <li>• Troubleshooting machine malfunctions</li>
-              </ul>
-              <button
-                onClick={onViewWorkPhotos}
-                className="px-6 py-3 border border-[#00A8FF]/30 rounded-full hover:bg-[#00A8FF]/10"
-              >
-                View Photos
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <Experience onViewPKLPhotos={onViewPKLPhotos} onViewWorkPhotos={onViewWorkPhotos} />
 
       {/* Tech Stack Section */}
       <TechStack />
@@ -839,58 +781,187 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       <Achievements />
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center px-6 md:px-16 py-32">
-        <div className="max-w-5xl w-full">
+      <section id="contact" className="min-h-screen flex items-center justify-center px-4 md:px-16 py-32 relative z-10">
+        <div className="max-w-6xl w-full">
+          {/* Header */}
           <motion.h2
-            className="font-['Syne'] font-bold text-center mb-12"
+            className="font-['Syne'] font-bold text-center mb-16 bg-gradient-to-r from-[#00A8FF] to-[#00C875] bg-clip-text text-transparent"
             style={{ fontSize: '3.5rem', letterSpacing: '-0.02em' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Let's Connect
+            Say Hi, Don't Be Shy
           </motion.h2>
 
-          <motion.p
-            className="font-['Inter'] text-gray-400 text-center mb-16 text-xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Interested in collaboration? Reach out!
-          </motion.p>
-
-          <div className="grid grid-cols-3 gap-8">
-            {[
-              { icon: <Mail />, label: 'Email', href: 'mailto:rifqifauzii.an@gmail.com' },
-              { icon: <Linkedin />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/rifqi-fauzi-anwar-ab486b290/' },
-              { icon: <Github />, label: 'GitHub', href: 'https://github.com/Fauziian' },
-              { icon: <Instagram />, label: 'Instagram', href: 'https://www.instagram.com/rfqifziannn/?__pwa=1#' },
-              { icon: <Music />, label: 'TikTok', href: 'https://www.tiktok.com/@fauziiann?is_from_webapp=1&sender_device=pc' },
-              { icon: <Youtube />, label: 'YouTube', href: 'https://www.youtube.com/@Fauzii_An' },
-            ].map((link, i) => (
-              <motion.a
-                key={i}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-4 p-8 border border-white/10 rounded-3xl hover:bg-white/5 hover:border-[#00C875]/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Left Column: Info Cards & Social Links */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Email Card */}
+              <motion.div
+                className="flex items-center gap-5 p-6 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.5 }}
               >
-                <div className="w-12 h-12 flex items-center justify-center text-[#00C875]">
-                  {link.icon}
+                <div className="w-12 h-12 rounded-full bg-[#00A8FF]/10 border border-[#00A8FF]/20 flex items-center justify-center text-[#00A8FF] flex-shrink-0">
+                  <Mail className="w-5 h-5" />
                 </div>
-                <p className="font-['Inter']">{link.label}</p>
-              </motion.a>
-            ))}
+                <div>
+                  <h4 className="font-['Montserrat'] font-bold text-white text-sm">Email</h4>
+                  <a href="mailto:rifqifauzii.an@gmail.com" className="font-['Inter'] text-white/60 hover:text-[#00A8FF] transition-colors text-sm break-all">
+                    rifqifauzii.an@gmail.com
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Phone Card */}
+              <motion.div
+                className="flex items-center gap-5 p-6 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="w-12 h-12 rounded-full bg-[#00C875]/10 border border-[#00C875]/20 flex items-center justify-center text-[#00C875] flex-shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-['Montserrat'] font-bold text-white text-sm">Phone</h4>
+                  <a href="tel:+6282211187591" className="font-['Inter'] text-white/60 hover:text-[#00C875] transition-colors text-sm">
+                    +62 822-1118-7591
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Location Card */}
+              <motion.div
+                className="flex items-center gap-5 p-6 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="w-12 h-12 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-['Montserrat'] font-bold text-white text-sm">Location</h4>
+                  <p className="font-['Inter'] text-white/60 text-sm">
+                    Bandung, Jawa Barat, Indonesia
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Connect With Me Section */}
+              <div className="pt-6">
+                <h4 className="font-['Montserrat'] font-bold text-white mb-4 text-base">Connect With Me</h4>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/in/rifqi-fauzi-anwar-ab486b290/' },
+                    { icon: <Github className="w-5 h-5" />, href: 'https://github.com/Fauziian' },
+                    { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/rfqifziannn/?__pwa=1#' },
+                    { icon: <Music className="w-5 h-5" />, href: 'https://www.tiktok.com/@fauziiann?is_from_webapp=1&sender_device=pc' },
+                    { icon: <Youtube className="w-5 h-5" />, href: 'https://www.youtube.com/@Fauzii_An' },
+                  ].map((social, idx) => (
+                    <motion.a
+                      key={idx}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:bg-white/10 hover:border-[#00C875] hover:text-[#00C875] hover:shadow-lg hover:shadow-[#00C875]/25 transition-all duration-300"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Contact Form */}
+            <motion.div
+              className="lg:col-span-7 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="font-['Montserrat'] font-semibold text-white/80 text-sm">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="e.g. John Doe"
+                      className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
+                      required
+                    />
+                  </div>
+
+                  {/* Email Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="font-['Montserrat'] font-semibold text-white/80 text-sm">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="e.g. john@example.com"
+                      className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Subject Input */}
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="font-['Montserrat'] font-semibold text-white/80 text-sm">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    placeholder="How can I help you?"
+                    className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
+                    required
+                  />
+                </div>
+
+                {/* Message Input */}
+                <div className="space-y-2">
+                  <label htmlFor="message" className="font-['Montserrat'] font-semibold text-white/80 text-sm">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    placeholder="Your message here..."
+                    className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm resize-none"
+                    required
+                  />
+                </div>
+
+                {/* Send Button */}
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-[#00A8FF] to-[#00C875] hover:from-[#0096e6] hover:to-[#00b368] text-white rounded-xl font-['Inter'] font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </motion.div>
           </div>
 
-          <p className="text-center text-gray-600 mt-20 font-['Inter']">
+          {/* Footer Copyright */}
+          <p className="text-center text-white/30 mt-20 font-['Inter'] text-sm">
             © 2026 Rifqi Fauzi Anwar. All rights reserved.
           </p>
         </div>
