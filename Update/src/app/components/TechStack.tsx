@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
+import { useState } from 'react';
 
 export function TechStack() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const technologies = [
     { name: 'Java', category: 'Backend', level: 90, color: '#00C875' },
     { name: 'PHP', category: 'Backend', level: 85, color: '#00C875' },
@@ -36,7 +38,7 @@ export function TechStack() {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {technologies.map((tech, i) => (
+          {technologies.slice(0, isExpanded ? undefined : 6).map((tech, i) => (
             <motion.div
               key={i}
               className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
@@ -71,6 +73,24 @@ export function TechStack() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-6 py-3 border border-white/10 bg-white/5 hover:bg-white/10 hover:border-[#00C875]/50 rounded-xl font-['Inter'] font-semibold text-white transition-all duration-300 flex items-center gap-2 cursor-pointer"
+          >
+            <span>{isExpanded ? 'See Less' : 'See More'}</span>
+            <svg
+              className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
         </div>
 
         {/* Category Summary */}

@@ -216,7 +216,7 @@ export function DraggableCard() {
               RIFQI FAUZI
             </h3>
             <p className="font-['Montserrat'] font-semibold text-[#00C875] text-[10px] tracking-wider uppercase mt-1">
-              Frontend Developer
+              Fullstack Developer
             </p>
           </div>
 

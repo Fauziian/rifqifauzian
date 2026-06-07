@@ -71,6 +71,7 @@ interface ModernPortfolioProps {
 export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPortfolioProps) {
   const [stars, setStars] = useState<{ x: number; y: number; size: number; delay: number }[]>([]);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
 
   useEffect(() => {
     const newStars = Array.from({ length: 80 }, () => ({
@@ -558,7 +559,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 demo: 'https://fauziian.github.io/RanataTour/',
                 image: 'https://images.unsplash.com/photo-1558979159-2b18a4070a87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
               },
-            ].map((project, i) => (
+            ].slice(0, isProjectsExpanded ? undefined : 4).map((project, i) => (
               <motion.div
                 key={i}
                 className="group h-full"
@@ -631,6 +632,24 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setIsProjectsExpanded(!isProjectsExpanded)}
+              className="px-6 py-3 border border-white/10 bg-white/5 hover:bg-white/10 hover:border-[#00C875]/50 rounded-xl font-['Inter'] font-semibold text-white transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
+              <span>{isProjectsExpanded ? 'See Less' : 'See More'}</span>
+              <svg
+                className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isProjectsExpanded ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
