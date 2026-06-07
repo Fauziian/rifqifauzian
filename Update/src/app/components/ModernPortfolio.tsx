@@ -314,7 +314,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               </div>
               <h3 className="font-['Montserrat'] font-bold text-xl mb-3">Software Engineer</h3>
               <p className="font-['Inter'] text-gray-400 leading-relaxed">
-                Full-stack development with expertise in modern web technologies, creating efficient and scalable applications.
+                Full-stack development with 3+ years of experience in modern web technologies, creating efficient and scalable applications.
               </p>
             </motion.div>
 
@@ -331,7 +331,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               </div>
               <h3 className="font-['Montserrat'] font-bold text-xl mb-3">Network Engineer</h3>
               <p className="font-['Inter'] text-gray-400 leading-relaxed">
-                Skilled in Mikrotik configuration, network infrastructure setup, and ensuring secure, reliable connectivity.
+                7+ years of experience in Cisco & Mikrotik configuration, network infrastructure setup, and ensuring secure, reliable connectivity.
               </p>
             </motion.div>
 
@@ -348,7 +348,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
               </div>
               <h3 className="font-['Montserrat'] font-bold text-xl mb-3">Game Developer</h3>
               <p className="font-['Inter'] text-gray-400 leading-relaxed">
-                Creating engaging games with Java and Roblox Studio. Owner of Mount YH with 2.695M total player visits.
+                Creating engaging games for 11+ years with Java and Roblox Studio. Owner of Mount YH with 2.695M total player visits.
               </p>
             </motion.div>
           </div>
@@ -366,20 +366,20 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="text-center">
-                <p className="font-['Syne'] font-bold text-4xl text-[#00C875] mb-2">9+</p>
-                <p className="font-['Inter'] text-gray-400">Projects</p>
+                <p className="font-['Syne'] font-bold text-4xl text-[#00C875] mb-2">3+ Yrs</p>
+                <p className="font-['Inter'] text-gray-400">Full-Stack Dev</p>
               </div>
               <div className="text-center">
-                <p className="font-['Syne'] font-bold text-4xl text-[#00A8FF] mb-2">2+</p>
-                <p className="font-['Inter'] text-gray-400">Years Experience</p>
+                <p className="font-['Syne'] font-bold text-4xl text-[#00A8FF] mb-2">7+ Yrs</p>
+                <p className="font-['Inter'] text-gray-400">Network Engineer</p>
               </div>
               <div className="text-center">
-                <p className="font-['Syne'] font-bold text-4xl text-purple-500 mb-2">2.695M</p>
+                <p className="font-['Syne'] font-bold text-4xl text-purple-500 mb-2">11+ Yrs</p>
+                <p className="font-['Inter'] text-gray-400">Game Developer</p>
+              </div>
+              <div className="text-center">
+                <p className="font-['Syne'] font-bold text-4xl text-[#00C875] mb-2">2.695M</p>
                 <p className="font-['Inter'] text-gray-400">Player Visits</p>
-              </div>
-              <div className="text-center">
-                <p className="font-['Syne'] font-bold text-4xl text-[#00C875] mb-2">100%</p>
-                <p className="font-['Inter'] text-gray-400">Dedication</p>
               </div>
             </div>
           </motion.div>
