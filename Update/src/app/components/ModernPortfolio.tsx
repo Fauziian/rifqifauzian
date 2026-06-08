@@ -14,11 +14,12 @@ import mountVelmornImage from '../../imports/thumb3.png';
 import robloxGameImage from '../../imports/roblox_game.jpg';
 import networkEngineerImage from '../../imports/network_engineer.png';
 import softwareEngineerImage from '../../imports/software_engineer.png';
-import awakeningSurabayaImage from '../../imports/awakening_surabaya.png';
-import gamingShopImage from '../../imports/gaming_shop.png';
-import guitarHobbysImage from '../../imports/guitar_hobbys.png';
-import jkt48EntertainmentImage from '../../imports/jkt48_entertainment.png';
-import ranataTourImage from '../../imports/ranata_tour.png';
+import awakeningSurabayaImage from '../../imports/Surabaya.jpg';
+import gamingShopImage from '../../imports/gamingstore.png';
+import guitarHobbysImage from '../../imports/GUITARHOBBY.png';
+import jkt48EntertainmentImage from '../../imports/JKT48.png';
+import rasaRekomendasiImage from '../../imports/rasarekomendasi.png';
+import ranataTourImage from '../../imports/ranatatour.png';
 
 const roles = [
   'Network Engineer',
@@ -710,7 +711,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 desc: 'AI-powered recipe platform',
                 stack: 'Laravel, PHP, MySQL',
                 github: 'https://github.com/Fauziian/RasaRekomendasi',
-                image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: rasaRekomendasiImage,
               },
               {
                 title: 'Ranata Tour',
