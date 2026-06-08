@@ -35,7 +35,7 @@ function Typewriter() {
     const handleType = () => {
       if (!isDeleting) {
         setDisplayText((prev) => currentFullText.substring(0, prev.length + 1));
-        
+
         if (displayText === currentFullText) {
           setTypingSpeed(1800);
           setIsDeleting(true);
@@ -90,10 +90,12 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       return;
     }
 
+    const form = e.currentTarget;
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
 
     try {
@@ -104,7 +106,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
       const data = await response.json();
       if (data.success) {
         setSubmitStatus('success');
-        e.currentTarget.reset();
+        form.reset();
       } else {
         setSubmitStatus('error');
       }
@@ -722,11 +724,10 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div className={`h-full flex flex-col bg-white/5 border rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-300 ${
-                  project.featured
+                <div className={`h-full flex flex-col bg-white/5 border rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-300 ${project.featured
                     ? 'border-purple-500/50 hover:border-purple-500 bg-gradient-to-br from-purple-500/10 to-transparent'
                     : 'border-white/10 hover:border-[#00C875]/50'
-                }`}>
+                  }`}>
                   {/* Project Image */}
                   {project.image && (
                     <div className="relative w-full h-52 overflow-hidden bg-gradient-to-br from-gray-800 to-black flex-shrink-0">
@@ -771,11 +772,10 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center gap-2 px-4 py-2 rounded-full ${
-                            project.color === 'purple'
+                          className={`flex items-center gap-2 px-4 py-2 rounded-full ${project.color === 'purple'
                               ? 'bg-purple-500/20 border border-purple-500/30 hover:bg-purple-500/30 text-purple-400'
                               : 'bg-[#00C875]/20 border border-[#00C875]/30 hover:bg-[#00C875]/30'
-                          }`}
+                            }`}
                         >
                           <ExternalLink className="w-4 h-4" />
                           <span className="font-['Inter'] text-sm">{project.featured ? 'Play Now' : 'View'}</span>
