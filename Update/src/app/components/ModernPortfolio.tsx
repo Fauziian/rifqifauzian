@@ -14,6 +14,11 @@ import mountVelmornImage from '../../imports/thumb3.png';
 import robloxGameImage from '../../imports/roblox_game.jpg';
 import networkEngineerImage from '../../imports/network_engineer.png';
 import softwareEngineerImage from '../../imports/software_engineer.png';
+import awakeningSurabayaImage from '../../imports/awakening_surabaya.png';
+import gamingShopImage from '../../imports/gaming_shop.png';
+import guitarHobbysImage from '../../imports/guitar_hobbys.png';
+import jkt48EntertainmentImage from '../../imports/jkt48_entertainment.png';
+import ranataTourImage from '../../imports/ranata_tour.png';
 
 const roles = [
   'Network Engineer',
@@ -674,7 +679,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 stack: 'Java, Java Swing, OOP',
                 github: 'https://github.com/Fauziian/The-Awakening-Of-Surabaya',
                 demo: 'https://drive.google.com/file/d/1KlJ7wRQqPHCPFl1VlrER2iYW54iyVHRs/view?usp=sharing',
-                image: 'https://images.unsplash.com/photo-1671740193633-abef5626698a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: awakeningSurabayaImage,
               },
               {
                 title: 'GuitarHobbys',
@@ -682,7 +687,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 stack: 'HTML, CSS, JavaScript',
                 github: 'https://github.com/Fauziian/GuitarHobbys',
                 demo: 'https://fauziian.github.io/GuitarHobbys/',
-                image: 'https://images.unsplash.com/photo-1725152471889-6c59a52e7794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: guitarHobbysImage,
               },
               {
                 title: 'JKT 48 Entertainment',
@@ -690,7 +695,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 stack: 'HTML, PHP, CSS, JavaScript',
                 github: 'https://github.com/Fauziian/JKT48',
                 demo: 'https://fauziian.github.io/JKT48/',
-                image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: jkt48EntertainmentImage,
               },
               {
                 title: 'Gaming Shop',
@@ -698,7 +703,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 stack: 'HTML, CSS',
                 github: 'https://github.com/Fauziian/GamingShop',
                 demo: 'https://fauziian.github.io/GamingShop/',
-                image: 'https://images.unsplash.com/photo-1626218174358-7769486c4b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: gamingShopImage,
               },
               {
                 title: 'RasaRekomendasi',
@@ -713,7 +718,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 stack: 'HTML, CSS, JavaScript',
                 github: 'https://github.com/Fauziian/RanataTour',
                 demo: 'https://fauziian.github.io/RanataTour/',
-                image: 'https://images.unsplash.com/photo-1558979159-2b18a4070a87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+                image: ranataTourImage,
               },
             ].slice(0, isProjectsExpanded ? undefined : 4).map((project, i) => (
               <motion.div
