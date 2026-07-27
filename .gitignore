@@ -4,3 +4,5 @@ Figma/dist/
 .DS_Store
 dist/
 *.lock
+
+.vercel
