@@ -731,8 +731,8 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className={`h-full flex flex-col bg-white/5 border rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-300 ${project.featured
-                    ? 'border-purple-500/50 hover:border-purple-500 bg-gradient-to-br from-purple-500/10 to-transparent'
-                    : 'border-white/10 hover:border-[#00C875]/50'
+                  ? 'border-purple-500/50 hover:border-purple-500 bg-gradient-to-br from-purple-500/10 to-transparent'
+                  : 'border-white/10 hover:border-[#00C875]/50'
                   }`}>
                   {/* Project Image */}
                   {project.image && (
@@ -779,8 +779,8 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                           target="_blank"
                           rel="noopener noreferrer"
                           className={`flex items-center gap-2 px-4 py-2 rounded-full ${project.color === 'purple'
-                              ? 'bg-purple-500/20 border border-purple-500/30 hover:bg-purple-500/30 text-purple-400'
-                              : 'bg-[#00C875]/20 border border-[#00C875]/30 hover:bg-[#00C875]/30'
+                            ? 'bg-purple-500/20 border border-purple-500/30 hover:bg-purple-500/30 text-purple-400'
+                            : 'bg-[#00C875]/20 border border-[#00C875]/30 hover:bg-[#00C875]/30'
                             }`}
                         >
                           <ExternalLink className="w-4 h-4" />
@@ -943,7 +943,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                       type="text"
                       id="name"
                       name="name"
-                      placeholder="e.g. John Doe"
+                      placeholder="Your Name"
                       className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
                       required
                     />
@@ -958,7 +958,7 @@ export function ModernPortfolio({ onViewPKLPhotos, onViewWorkPhotos }: ModernPor
                       type="email"
                       id="email"
                       name="email"
-                      placeholder="e.g. john@example.com"
+                      placeholder="Yourname@gmail.com"
                       className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-['Inter'] text-white placeholder-white/30 focus:outline-none focus:border-[#00C875] focus:bg-white/[0.08] transition-all duration-300 text-sm"
                       required
                     />
